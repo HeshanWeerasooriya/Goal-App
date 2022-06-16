@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { StyleSheet, View, TextInput, Button } from "react-native";
+import { StyleSheet, View, TextInput, Button, Modal } from "react-native";
 
 function Goalinput(props) {
   const [enterdGoalText, setEnterdGoalText] = useState("");
@@ -14,15 +14,17 @@ function Goalinput(props) {
   }
 
   return (
-    <View style={styles.inputContainer}>
-      <TextInput
-        style={styles.textInput}
-        placeholder="Your Course Goals!"
-        onChangeText={goalInputHandler}
-        value={enterdGoalText}
-      />
-      <Button title="Add Goals" onPress={addGoalHandler} />
-    </View>
+    <Modal visible={props.visible} animationType='slide'>
+      <View style={styles.inputContainer}>
+        <TextInput
+          style={styles.textInput}
+          placeholder="Your Course Goals!"
+          onChangeText={goalInputHandler}
+          value={enterdGoalText}
+        />
+        <Button title="Add Goals" onPress={addGoalHandler} />
+      </View>
+    </Modal>
   );
 }
 
